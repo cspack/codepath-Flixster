@@ -20,6 +20,7 @@ public class Movie implements Serializable {
     private String backdropPath, posterPath, originalTitle, overview, releaseDate;
     private double voteAverage;
     private int id;
+    private long timestamp;
 
     // Generated function after image loads.
     private transient Palette.Swatch colorSwatch = null;
@@ -31,6 +32,7 @@ public class Movie implements Serializable {
     }
 
     public Movie(JSONObject jsonObject) throws JSONException {
+        timestamp = System.currentTimeMillis();
         backdropPath = jsonObject.getString("backdrop_path");
         posterPath = jsonObject.getString("poster_path");
         originalTitle = jsonObject.getString("original_title");
@@ -41,11 +43,11 @@ public class Movie implements Serializable {
     }
 
     public String getBackdropPath() {
-        return String.format("https://image.tmdb.org/t/p/w300%s", backdropPath);
+        return String.format("https://image.tmdb.org/t/p/w300%s?ts=%d", backdropPath, timestamp);
     }
 
     public String getPosterPath() {
-        return String.format("https://image.tmdb.org/t/p/w300%s", posterPath);
+        return String.format("https://image.tmdb.org/t/p/w300%s?ts=%d", posterPath, timestamp);
     }
 
     public int getId() { return id; }

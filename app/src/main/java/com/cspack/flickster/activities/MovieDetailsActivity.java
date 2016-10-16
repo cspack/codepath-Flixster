@@ -48,7 +48,7 @@ public class MovieDetailsActivity extends YouTubeBaseActivity
         trailerThumbnail = (ImageView) findViewById(R.id.ivTrailer);
         Picasso.with(MovieDetailsActivity.this).load(movie.getBackdropPath()).into(trailerThumbnail);
         ((TextView) findViewById(R.id.tvTitle)).setText(movie.getOriginalTitle());
-        ((TextView) findViewById(R.id.tvReleaseDate)).setText(movie.getReleaseDate());
+        ((TextView) findViewById(R.id.tvReleaseDate)).setText(getString(R.string.released_on, movie.getReleaseDate()));
         ((TextView) findViewById(R.id.tvOverview)).setText(movie.getOverview());
         RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         // vote average is 1 to 10, normalize to 5 stars (with half increments).

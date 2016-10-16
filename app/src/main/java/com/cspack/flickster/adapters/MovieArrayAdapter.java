@@ -109,7 +109,7 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
             viewHolder.tvOverview.setText(movie.getOverview());
         }
         if (movie.getColorSwatch() == null) {
-            Log.d(TAG, "Default color for movie " + " type " + type + "; position " + position);
+            Log.d(TAG, "Default color for movie position " + position);
             convertView.setBackgroundColor(Color.BLACK);
             if (viewHolder.tvOverview != null) {
                 viewHolder.tvOverview.setTextColor(Color.GRAY);
@@ -131,7 +131,7 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
             if (type == MovieListDisplayType.BACKDROP_POPULAR_VIDEO) {
                 viewHolder.tvTitle.setBackgroundColor(alphacolor);
             }
-            Log.d(TAG, "Fancy color for movie " + " type " + type + "; position " + position + " alphacolor " + String.format("%08X", alphacolor));
+            Log.d(TAG, "Fancy color for movie position " + position + " alphacolor " + String.format("%08X", alphacolor));
         }
 
         final String imageUrl = (type != MovieListDisplayType.BACKDROP_POPULAR_VIDEO &&
@@ -156,9 +156,10 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
                                         @Override
                                         public void run() {
                                             notifyDataSetChanged();
-                                            return;
                                         }
                                     });
+                                    // Success.
+                                    return source;
                                 }
                             }
                         }

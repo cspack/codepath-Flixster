@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Flickster</string>
+    <string name="released_on">Released on %1$s</string>
 </resources>

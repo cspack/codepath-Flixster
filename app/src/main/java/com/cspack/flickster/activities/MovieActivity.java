@@ -71,6 +71,7 @@ public class MovieActivity extends AppCompatActivity implements MovieClient.OnMo
         if (lvMovieList != null) {
             ((MovieArrayAdapter) lvMovieList.getAdapter()).clear();
             ((MovieArrayAdapter) lvMovieList.getAdapter()).addAll(movies);
+            lvMovieList.deferNotifyDataSetChanged();
         }
     }
 }
